@@ -2,61 +2,51 @@
 <html lang="en">
     <head>
         <title>Adventure Game</title>
-        <style>
-            p{
-                text-indent: 50px;
-            }
-        </style>
     </head>
     <body>
     <h1>Adventure 1.0</h1>
         <h3>Made by : Makayla Starkey</h3>
         <p>Welcome to the game!</p>
         <script>
-            /*alert("Ding fries are done");
-            confirm("Do you want to eat the fries?");
-            prompt("How did you like your fries");*/
             
-            var favColor = prompt ("what is your favorite color?").toLowerCase();
+            Start();
             
-            if(favColor == "あお")
+            function Start()
             {
-                alert ("あお is the coor of the sky!");
+                var playerName = prompt("What is your name warrior?");
+                
+                alert("Welcome to Old Japan " + playerName);
+                
+                var startGame = confirm("Are you ready to start your journy?");
+                
+                if(startGame)
+                    {
+                        
+                    }
+                else
+                    {
+                        alert("Fairwell! Till we meet again!");
+                    }
+                
+                function Village()
+                {
+                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields. There is also an inn and a little trading post!").toLowerCase();
+                    
+                    switch(village)
+                            {
+                        case "farmers":
+                            alert("The farmers are all working hard but on of the farmers make their way over to you, but looks at you and speaks a language you do not know!")
+                            break;
+                        case "inn":
+                            alert("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!")
+                            break;
+                        default:
+                            alert("You can not do that!" + village)
+                            }
+                }
+                
             }
-            else if(favColor == "あか")
-                {
-                    alert ("あか is the color of love!");
-                }
-            else if(favColor == "みどり")
-                {
-                    alert ("みどり is the color of Leaves!");
-                }
-            else if(favColor == "きいろ")
-                {
-                    alert ("きいろ is the color of Bananas!");
-                }
-            else if(favColor == "むらさき")
-                {
-                    alert ("むらさき is the color of Grapes!");
-                }
-            else if(favColor == "だいだいいろ")
-                {
-                    alert ("だいだいいろ is the color of Oranges!");
-                }
-            else if(favColor == "ちゃいろ")
-                {
-                    alert ("ちゃいろ is the color of poop!");
-                }
-            else
-            {
-                alert ("That is not a color!");
-            }
-            
-           /* var favFood = "Meat";
-            
-            var favNumber = "7";
-            
-            var percent = " 0.75";*/
+        
             
         </script>
     </body>
