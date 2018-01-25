@@ -27,21 +27,83 @@
                     {
                         alert("Fairwell! Till we meet again!");
                     }
+        
+                Village();
                 
                 function Village()
                 {
-                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields. There is also an inn and a little trading post!").toLowerCase();
+                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north!").toLowerCase();
+                    
                     
                     switch(village)
                             {
-                        case "farmers":
-                            alert("The farmers are all working hard but on of the farmers make their way over to you, but looks at you and speaks a language you do not know!")
+                        case "w":
+                            alert("The farmers are all working hard but, one of the farmers make their way over to you. He looks at you and speaks a language you do not know!")
+                            Village();
                             break;
-                        case "inn":
+                        case "s":
                             alert("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!")
+                            Village();
+                            break;
+                        case "look around":
+                            Village();
+                            break;
+                        case "n":
+                            Trading();
+                            break;
+                            
+                        case "exit":
+                            alert("Hahah you chicken run away!")
+                            Start();
                             break;
                         default:
-                            alert("You can not do that!" + village)
+                            alert("You can not " + village)
+                            Village();
+                            break;
+                            }
+                }
+                
+                function Trading()
+                {
+                   var trading = prompt("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!").toLowerCase();
+                    
+                    
+                    switch(trading)
+                            {
+                        case "take dictionary":
+                            prompt("You took the dictionary!")
+                            break;
+                        case "look around":
+                            TradingWOdic();
+                            break;
+                        case "s":
+                            Village();
+                            break;
+                        default:
+                            alert("You can not " + trading)
+                            Village();
+                            break;
+                            
+                            }
+                }
+                
+                function TradingWOdic()
+                {
+                    var tradwodic = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
+                    
+                    
+                    switch(tradwodic)
+                            {
+                        case "Take gold coins":
+                            prompt("You took the gold coins!")
+                            break;
+                        case "s":
+                            Village();
+                            break;
+                        default:
+                            alert("You can not " + tradwodic)
+                            Village();
+                            break;
                             }
                 }
                 
