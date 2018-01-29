@@ -9,6 +9,15 @@
         <p>Welcome to the game!</p>
         <script>
             
+            var inventory = 
+                {
+                    dictionary:0,
+                    coins:0,
+                    oil:0,
+                    key:0,
+                    sac:0,
+                }
+            
             Start();
             
             function Start()
@@ -38,22 +47,22 @@
                     switch(village)
                             {
                         case "w":
-                            alert("The farmers are all working hard but, one of the farmers make their way over to you. He looks at you and speaks a language you do not know!")
+                            alert("The farmers are all working hard but, one of the farmers make their way over to you. He looks at you and speaks a language you do not know!");
                             Village();
                             break;
                         case "s":
-                            alert("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!")
+                            alert("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!");
                             Village();
                             break;
                         case "look around":
                             Village();
                             break;
                         case "n":
-                            Trading();
+                            Trading(); /*this is for when they go to the trading post*/
                             break;
                             
                         case "exit":
-                            alert("Hahah you chicken run away!")
+                            alert("Hahah you chicken run away!");
                             Start();
                             break;
                         default:
@@ -67,27 +76,62 @@
                 {
                    var trading = prompt("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!").toLowerCase();
                     
+                    /*var post = prompt("").toLowerCase();*/
+                    
                     
                     switch(trading)
                             {
                         case "take dictionary":
-                            prompt("You took the dictionary!")
+                            prompt("You took the dictionary!" + inventory.dictionary ++;);
+                            
+                            break;
+                        case "take coins":
+                            prompt("You took the Coins!");
+                            break;
+                        case "take oil":
+                            prompt("You took the Oil!");
+                            break;
+                        case "take key":
+                            prompt("You took the Key!");
+                            break;
+                        case "take leather sac":
+                            prompt("You took the Leather Sac!");
                             break;
                         case "look around":
-                            TradingWOdic();
+                            TradingCoins();
                             break;
                         case "s":
                             Village();
                             break;
                         default:
-                            alert("You can not " + trading)
-                            Village();
+                            alert("You can not " + trading);
+                            Trading();
                             break;
                             
                             }
                 }
                 
-                function TradingWOdic()
+                function TradingCoins()
+                {
+                    var tradcoins = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
+                    
+                    
+                    switch(tradcoin)
+                            {
+                        case "Take gold coins":
+                            prompt("You took the gold coins!")
+                            break;
+                        case "s":
+                            Village();
+                            break;
+                        default:
+                            alert("You can not " + tradwodic)
+                            Village();
+                            break;
+                            }
+                }
+                
+                function Tradingoil()
                 {
                     var tradwodic = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
                     
