@@ -81,19 +81,30 @@
                     
                     switch(trading)
                             {
-                        case "take dictionary":
-                            prompt("You took the dictionary!" + inventory.dictionary ++;);
-                            
+                        if(case 1)
+                            {
+                        case 1 "take dictionary":
+                            prompt("You took the dictionary!" + inventory.dictionary ++);
                             break;
+                            }
+                    else
+                        {
                         case "take coins":
                             prompt("You took the Coins!");
                             break;
+                        }
+                    else
+                        {
                         case "take oil":
                             prompt("You took the Oil!");
                             break;
+                        }
+                    else
+                        {
                         case "take key":
                             prompt("You took the Key!");
                             break;
+                        }
                         case "take leather sac":
                             prompt("You took the Leather Sac!");
                             break;
@@ -107,6 +118,7 @@
                             alert("You can not " + trading);
                             Trading();
                             break;
+                                
                             
                             }
                 }
