@@ -9,10 +9,11 @@
         <p>Welcome to the game!</p>
         <script>
             
+            //Javascript Object for an inventory
             var inventory = 
                 {
                     dictionary:0,
-                    coins:0,
+                    coins:100,
                     oil:0,
                     key:0,
                     sac:0,
@@ -58,7 +59,26 @@
                             Village();
                             break;
                         case "n":
-                            Trading(); /*this is for when they go to the trading post*/
+                            alert("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!");
+                            var tradingpost = prompt("What do you want to do next?");
+                                if(tradingpost == "dictionary" || tradingpost == "take dictionary" && inventory.coins >= 15)
+                                {
+                                    inventory.dictionary ++;
+                                    var cost = confirm("The dictionary costs 15 coins... would you like to buy the dictionary?")
+                                        if(cost)
+                                            {
+                                              alert("You own " + inventory.dictionary + " dictionary");
+                                              inventory.coins = inventory.coins - 15;
+                                              alert("You have " + inventory.coins + " coins remaining!");  
+                                            }
+                                        else
+                                            {
+                                                var tradingpost;    
+                                            }
+                                    
+                                }
+                            
+//                            Trading(); /*this is for when they go to the trading post*/
                             break;
                             
                         case "exit":
@@ -72,98 +92,88 @@
                             }
                 }
                 
-                function Trading()
-                {
-                   var trading = prompt("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!").toLowerCase();
-                    
-                    /*var post = prompt("").toLowerCase();*/
-                    
-                    
-                    switch(trading)
-                            {
-                        if(case 1)
-                            {
-                        case 1 "take dictionary":
-                            prompt("You took the dictionary!" + inventory.dictionary ++);
-                            break;
-                            }
-                    else
-                        {
-                        case "take coins":
-                            prompt("You took the Coins!");
-                            break;
-                        }
-                    else
-                        {
-                        case "take oil":
-                            prompt("You took the Oil!");
-                            break;
-                        }
-                    else
-                        {
-                        case "take key":
-                            prompt("You took the Key!");
-                            break;
-                        }
-                        case "take leather sac":
-                            prompt("You took the Leather Sac!");
-                            break;
-                        case "look around":
-                            TradingCoins();
-                            break;
-                        case "s":
-                            Village();
-                            break;
-                        default:
-                            alert("You can not " + trading);
-                            Trading();
-                            break;
-                                
-                            
-                            }
+//                function Trading()
+//                {
+//                   var trading = prompt("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!").toLowerCase();
+//                    
+//                    /*var post = prompt("").toLowerCase();*/
+//                    
+//                    
+//                    switch(trading)
+//                        {
+//                        case 1 "take dictionary":
+//                            prompt("You took the dictionary!" + inventory.dictionary ++);
+//                            var dictionary
+//                            break;
+//                    
+//                        case "take coins":
+//                            prompt("You took the Coins!");
+//                            break;
+//                        case "take oil":
+//                            prompt("You took the Oil!");
+//                            break;
+//                        case "take key":
+//                            prompt("You took the Key!");
+//                            break;
+//                        case "take leather sac":
+//                            prompt("You took the Leather Sac!");
+//                            break;
+//                        case "look around":
+//                            TradingCoins();
+//                            break;
+//                        case "s":
+//                            Village();
+//                            break;
+//                        default:
+//                            alert("You can not " + trading);
+//                            Trading();
+//                            break;
+//                                
+//                            
+//                        }
+//                }
+//                
+//                function TradingCoins()
+//                {
+//                    var tradcoins = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
+//                    
+//                    
+//                    switch(tradcoin)
+//                            {
+//                        case "Take gold coins":
+//                            prompt("You took the gold coins!")
+//                            break;
+//                        case "s":
+//                            Village();
+//                            break;
+//                        default:
+//                            alert("You can not " + tradwodic)
+//                            Village();
+//                            break;
+//                            }
+//                }
+//                
+//                function Tradingoil()
+//                {
+//                    var tradwodic = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
+//                    
+//                    
+//                    switch(tradwodic)
+//                            {
+//                        case "Take gold coins":
+//                            prompt("You took the gold coins!")
+//                            break;
+//                        case "s":
+//                            Village();
+//                            break;
+//                        default:
+//                            alert("You can not " + tradwodic)
+//                            Village();
+//                            break;
+//                            }
                 }
                 
-                function TradingCoins()
-                {
-                    var tradcoins = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
-                    
-                    
-                    switch(tradcoin)
-                            {
-                        case "Take gold coins":
-                            prompt("You took the gold coins!")
-                            break;
-                        case "s":
-                            Village();
-                            break;
-                        default:
-                            alert("You can not " + tradwodic)
-                            Village();
-                            break;
-                            }
-                }
-                
-                function Tradingoil()
-                {
-                    var tradwodic = prompt("There is no one at the Trading Post, but you see some gold coins, oil, a key, and a leather sac!")
-                    
-                    
-                    switch(tradwodic)
-                            {
-                        case "Take gold coins":
-                            prompt("You took the gold coins!")
-                            break;
-                        case "s":
-                            Village();
-                            break;
-                        default:
-                            alert("You can not " + tradwodic)
-                            Village();
-                            break;
-                            }
-                }
-                
-            }
+            
         
             
         </script>
