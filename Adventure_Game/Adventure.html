@@ -18,6 +18,10 @@
                     key:0,
                     sac:0,
                 }
+            var invList = function()
+            {
+                    alert("Dictionary = "+inventory.dictionary + "\nCoins = "+inventory.coins + "\nOil = " +inventory.oil + "\nKey = " +inventory.sac + "\nSac = "+inventory.sac);
+            }
             
             Start();
             
@@ -42,23 +46,27 @@
                 
                 function Village()
                 {
-                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north!").toLowerCase();
+                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north!");
                     
                     
                     switch(village)
                             {
-                        case "w":
+                        case "fields":
                             alert("The farmers are all working hard but, one of the farmers make their way over to you. He looks at you and speaks a language you do not know!");
                             Village();
                             break;
-                        case "s":
+                        case "inn":
                             alert("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!");
                             Village();
                             break;
                         case "look around":
                             Village();
                             break;
-                        case "n":
+                        case "inventory":
+                            invList();
+                            Village();
+                            break;
+                        case "trading post":
                             alert("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!");
                             var tradingpost = prompt("Do you want to buy anything?");
                                 if(tradingpost == "dictionary" || tradingpost == "take dictionary" || tradingpost == "buy dictionary" && inventory.coins >= 15 && inventory.dictionary === 0)
@@ -77,8 +85,38 @@
                                                alert("You put back the dictionary.");
                                                 WhatN();
                                             }
-                                    
                                 }
+                                 else if(tradingpost == "coins" || tradingpost == "take coins" || tradingpost == "steal coins")
+                                    {
+                                        alert("You took the coins!")
+                                        inventory.coins = inventory.coins + 15;
+                                        alert("You own " + inventory.coins + " coins");
+                                        WhatN();  
+                                    }
+                                else if(tradingpost == "oil" || tradingpost == "take oil" || tradingpost == "buy oil")
+                                    {
+                                        alert("You bought the oil!")
+                                        inventory.coins = inventory.coins + 15;
+                                        alert("You own " + inventory.coins + " coins");
+                                        WhatN();  
+                                    }
+                                else if(tradingpost == "coins" || tradingpost == "take coins" || tradingpost == "steal coins" && inventory.coins >= 25 && inventory.oil <= 4)
+                                    {
+                                        inventory.oil ++;
+                                    var cost = confirm("The oil costs 25 coins... would you like to buy the oil?")
+                                        if(cost)
+                                            {
+                                              alert("You own " + inventory.oil + " oil");
+                                              inventory.coins = inventory.coins - 15;
+                                              alert("You have " + inventory.coins + " coins remaining!");
+                                                WhatN();
+                                            }
+                                        else
+                                            {
+                                               alert("You put back the dictionary.");
+                                                WhatN();
+                                            }  
+                                    }
                               /*  if(tradingpost == "gold" || tradingpost == "gold coins" || tradingpost == "take gold coins" || tradingpost == "steal coins")
                                 {
                                     inventory.coins ++;
@@ -103,7 +141,7 @@
                             Start();
                             break;
                         default:
-                            alert("You can not " + village)
+                            alert("You can not " + village);
                             WhatN();
                             break;
                             }
@@ -143,7 +181,7 @@
                                 }
                         break;
                     case "s":
-                        Village();
+                        Village1();
                         break;
                     case "i quit":
                             alert("Hahah you chicken run away!");
@@ -161,7 +199,7 @@
                 
                 function Village1()
                 {
-                    var village1 = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north!").toLowerCase();
+                    var village1 = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north!");
                     
                     
                     switch(village1)
@@ -173,8 +211,9 @@
                                  var farmT = confirm("Farmer: Hello traveler what brings you to our small village? Perhaps...are you lost?") 
                                     if(farmT)
                                         {
-                                            My goodness where do you need to 
+                                            prompt("My goodness, where do you need to go?"); 
                                         }
+                                        
                             }
                             
                             break;
@@ -230,7 +269,7 @@
                             Start();
                             break;
                         default:
-                            alert("You can not " + village)
+                            alert("You can not " + village);
                             WhatN();
                             break;
                             }
