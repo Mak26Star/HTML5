@@ -46,12 +46,12 @@
                 
                 function Village()
                 {
-                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north!");
+                    var village = prompt("You arived at a small village in the mountains. There are farmers in the fields in the west. There is also an inn to the south and a little trading post to the north! You need to find your way out of this village, Good Luck!");
                     
                     
                     switch(village)
                             {
-                        case "fields":
+                        case "farmers":
                             alert("The farmers are all working hard but, one of the farmers make their way over to you. He looks at you and speaks a language you do not know!");
                             Village();
                             break;
@@ -142,7 +142,7 @@
                             break;
                         default:
                             alert("You can not " + village);
-                            WhatN();
+                            Village();
                             break;
                             }
                 }
@@ -180,9 +180,14 @@
                                     WhatN();
                                 }
                         break;
-                    case "s":
+                    case "go to village":
                         Village1();
                         break;
+                    case "trading post":
+                            Village();
+                    case "inventory":
+                            invList();
+                            WhatN();
                     case "i quit":
                             alert("Hahah you chicken run away!");
                             Start();
@@ -204,21 +209,44 @@
                     
                     switch(village1)
                             {
-                        case "w":
+                        case "farmers":
                             var farm = prompt("The farmers are all working hard but, one of the farmers make their way over to you. He looks at you and speaks a language you do not know!");
                             if(farm == "use dictionary" || farm == "translate" || farm == "learn language" || farm == "look up" && inventory.dictionary == 1)
                             {
                                  var farmT = confirm("Farmer: Hello traveler what brings you to our small village? Perhaps...are you lost?") 
                                     if(farmT)
                                         {
-                                            prompt("My goodness, where do you need to go?"); 
+                                            var gogo = confirm("My goodness, where do you need to go? Do you need to go to Tokyo?"); 
+                                                if(gogo)
+                                                    {
+                                                        var money = confirm("Then you need 95 coins to get to Tokyo. Do you want to go now?")
+                                                            if(money && inventory.coins >= 95)
+                                                                {
+                                                                   alert("You have made it out and won the game! See you later in Tokyo.")
+                                                                }
+                                                        
+                                                    }
                                         }
+                                        
                                         
                             }
                             
                             break;
                         case "s":
-                            alert("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!");
+                            var inn = prompt("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!");
+                            if(inn == "use dictionary" || inn == "translate" || inn == "learn language" || inn == "look up" && inventory.dictionary == 1)
+                                {
+                                    var innk = confirm("What can I do for you? do you want a room?")
+                                        if(innk)
+                                            {
+                                                alert("You are taken to your room and after the door closes the door is locked!!! you look around to find a suspisous bookself.")
+                                                var bookS = confirm("do you want to investigate?")
+                                                    if(bookS)
+                                                        {
+                                                            alert("the bookself moved! revealing a hidden passage way")
+                                                        }
+                                            }
+                                }
                             Village1();
                             break;
                         case "look around":
