@@ -223,8 +223,17 @@
                                                             if(money && inventory.coins >= 95)
                                                                 {
                                                                    alert("You have made it out and won the game! See you later in Tokyo.")
+                                                                    Start();
+                                                                }
+                                                            else
+                                                                {
+                                                                    Village1();
                                                                 }
                                                         
+                                                    }
+                                                else
+                                                    {
+                                                        Village1();
                                                     }
                                         }
                                         
@@ -232,7 +241,7 @@
                             }
                             
                             break;
-                        case "s":
+                        case "inn":
                             var inn = prompt("You enter an old rickety inn and are greeted by another local. She speaks a language you do not know!");
                             if(inn == "use dictionary" || inn == "translate" || inn == "learn language" || inn == "look up" && inventory.dictionary == 1)
                                 {
@@ -244,6 +253,17 @@
                                                     if(bookS)
                                                         {
                                                             alert("the bookself moved! revealing a hidden passage way")
+                                                            var enter = confirm("do you want to enter?")
+                                                                if(enter)
+                                                                    {
+                                                                        var sign = prompt("you go down into the passages and find a sign but it's in another language! Do you have a dictionary? if you do, say translate.")
+                                                                            if(sign == "translate")
+                                                                                {
+                                                                                    alert("the sign says Tokyo is this way!")
+                                                                                    alert("You got out of the village! you won the game!")
+                                                                                    Start();
+                                                                                }
+                                                                    }
                                                         }
                                             }
                                 }
@@ -252,7 +272,7 @@
                         case "look around":
                             Village1();
                             break;
-                        case "n":
+                        case "trading post":
                             alert("There is no one at the Trading Post, but you see a dictionary, some gold coins, oil, a key, and a leather sac!");
                             var tradingpost = prompt("Do you want to buy anything?");
                                 if(tradingpost == "dictionary" || tradingpost == "take dictionary" || tradingpost == "buy dictionary" && inventory.coins >= 15 && inventory.dictionary === 0)
