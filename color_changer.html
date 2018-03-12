@@ -3,8 +3,153 @@
     <head>
         <meta charset="utf-8"/>
         <meta name="viewport" content"width=device-width, initial-scale=1.0"/>
+        
         <link rel="stylesheet" type="type/css" href="../css/style.css"/>
+        
         <title>Color Changer</title>
+        <style>
+        @import url('https://fonts.googleapis.com/css?family=Roboto');
+            body 
+            {
+              background-color: white;
+                font-family: 'Roboto', sans-serif;
+                position: relative;
+                z-index: 50;
+                padding-bottom: 50px;
+            }    
+            
+            .main
+            {
+                border-radius: 3px;
+                padding: 10px;
+                display: grid;
+                grid-template-columns: 1fr 1fr 1fr;
+                width: 50%;
+                height: 300;
+                text-align: left;
+                background-color: #1a1a1a;
+                margin: auto;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.6);
+            }
+            
+            .main h1
+            {
+                color: #fff;
+            }
+            
+            .main input[type="radio"]
+            {
+                display: none;
+            }
+            
+            .main input[type="radio"] + .box
+            {
+                transition: all .4s ease-out;
+            }
+            
+            .main input[type="radio"]:hover + .box
+            {
+                transition: all .4s ease-out;
+                border-radius: 13px;
+            }
+            
+            .main input[type="radio"]:checked + .box
+            {
+                transition: ease all 0.4s;
+                border-radius: 100%;
+            }
+            
+            .main .box
+            {
+                width: 50px;
+                height: 50px;
+                border-radius: 5px;
+                will-change: transition;
+                display: inline-block;
+                cursor: pointer;
+                position: relative;
+            }
+            
+            .main .hue
+            {
+                height: 20px;
+                width: 20px;
+                display: inline-block;
+                position: relative;
+                text-align: center;
+                align-content: center;
+                font-size: 14px;
+                color: white;
+                margin: 0;
+            }
+            
+            .main .color
+            {
+                height: 50px;
+                width: 50px;
+                display: inline-block;
+                position: relative;
+                text-align: center;
+                align-content: center;
+                font-size: 14px;
+                color: white;
+                margin: 0;
+            }
+            
+            .main .fill
+            {
+                height: 50px;
+                width: 50px;
+                display: inline-block;
+                position: relative;
+                text-align: center;
+                font-size: 14px;
+                padding: 0;
+                color: white;
+                margin: 0;
+            }
+            
+            .filler
+            {
+                flex: 1 1 auto;
+            }
+            
+            #preview
+            {
+                height: 175px;
+                width: 175px;
+                margin-top: 20px;
+                background-color: #1a1a1a;
+                margin-bottom: 20px;
+                border-radius: 20px;
+                border: 2px solid black;
+            }
+            
+            .previews
+            {
+                grid-column: 2/3;
+            }
+            
+            .modal
+            {
+                display: none;
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+                background-color: rgba(0,0,0,0.4);
+                overflow: auto;
+                z-index: 1;
+                transition: all .4s ease-out;
+            }
+            
+            .mdls
+            {
+                padding-top: 50px
+            }
+        
+        </style>
     </head>
     <body>
         <button id="change" class="btn">Change Color</button>
@@ -18,45 +163,71 @@
                                 <input type="radio" name="colors" onclick="Preview()" value="#F44336"/>
                                 <div class="box red500"></div>
                                 </label>
+                                
                                 <label>
                                 <input type="radio" name="colors" onclick="Prview()" value="#FF9800"/>
                                 <div class="box orange500"></div>
                                 </label>
+                                
                                 <lable>
                                 <input type="radio" name="colors" onclick="Preview()" value="#FFEB3B"/>
                                 <div class="box yellow500"></div>
                                 </lable>
+                                
                             </div>
                             <div id="row2">
                                 <lable>
                                 <input type="radio" name"colors" onclick="Preview()" value="#4CAF50"/>
                                 <div class="box green500"></div>
                                 </lable>
+                                
                                 <lable>
                                 <input type="radio" name"colors" onclick="Preview()" value="#2196F3"/>
                                 <div class="box blue500"></div>
                                 </lable>
+                                
                                 <lable>
                                 <input type="radio" name"colors" onclick="Preview()" value="#3F51b5"/>
                                 <div class="box indigo500"></div>
                                 </lable>
+                                
                             </div>
                             <div id="row3">
                                 <lable>
                                 <input type="radio" name"colors" onclick="Preview()" value="#9C27B0"/>
                                 <div class="box purple500"></div>
                                 </lable>
+                                
                                 <lable>
                                 <input type="radio" name"colors" onclick="Preview()" value="#FFFFFF"/>
                                 <div class="box white"></div>
                                 </lable>
+                                
                                 <lable>
                                 <input type="radio" name"colors" onclick="Preview()" value="#9E9E9E"/>
                                 <div class="box grey500"></div>
                                 </lable>
+                                
                             </div>
                             <div class="filler"></div>
                     </div>
+                    <div class="center">
+                    <div class="filler"></div>
+                    <div class="previews">
+                       <div id="preview"></div> 
+                    </div>  
+                    <div class="filler"></div>
+                    </div>
+                    
+                    <div class="right">
+                        <div class="filler"></div>
+                        <div>
+                        <button onclick="Close()" class="btn2">Close</button>
+                        <button onclick="changeColor()" class="btn2">Change</button>
+                        </div>
+                        <div class="filler"></div>
+                    </div>
+                        
                 </div>
             </div>
         </div>
