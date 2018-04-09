@@ -35,11 +35,28 @@
         var paddleX = (canvas.width-paddleWidth)/2;
         var rightPressed = false;
         var leftPressed = false;
+        var brickRowCount = 3;
+        var brickColumnCount = 5;
+        var brickWidth = 75;
+        var brickHeight = 20;
+        var brickPadding = 10;
+        var brickOffsetTop = 30;
+        var brickOffsetLeft = 30;
         
+        var bricks = [];
+        for(c=0; c<brickColumnCount; c++)
+            {
+                bricks[c] = [];
+                for(r=0; r<brickRowCount; r++)
+                    {
+                        bricks[c][r] = {x: 0, y: 0};
+                    }
+            }
         document.addEventListener("keydown", keyDownHandler, false);
         document.addEventListener("keyup", keyUpHandler, false);
         
-        function keyUpHandler(e)
+        
+        function keyDownHandler(e)
         {
             if(e.keyCode == 39)
                 {
@@ -67,7 +84,7 @@
         {
             ctx.beginPath();
             ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-            ctx.fillStyle = "#e0f4f2";
+            ctx.fillStyle = "#11cb87";
             ctx.fill();
             ctx.closePath();
         }
@@ -76,16 +93,47 @@
         {
             ctx.beginPath();
             ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-            ctx.fillStyle = "#fbcece";
+            ctx.fillStyle = "#8711cb";
             ctx.fill();
             ctx.closePath();
+        }
+        
+        function drawBricks()
+        {
+            for(c=0; c<brickColumnCount; c++)
+                {
+                    for(r=0; r<brickRowCount; r++)
+                        {
+                            var brickX = (c*(brickWidth+brickPadding))+brickOffsetLeft;
+                            var brickY = (r*(brickHeight+brickPadding))+brickOffsetTop;
+                            bricks[c][r].x = brickX;
+                            bricks[c][r].y = brickY;
+                            ctx.beginPath();
+                            ctx.rect(brickX, brickY, brickWidth, brickHeight);
+                            ctx.fillStyle = "#11cb87";
+                            ctx.fill();
+                            ctx.closePath();
+                        }
+                }
+        }
+        function collisionDetection()
+        {
+            for(c=0; c<brickColumnCount; c++)
+                {
+                    for(r=0; r<brickRowCount; r++)
+                        {
+                            var b =bricks[]
+                        }
+                }
         }
         
         function draw()
         {
             //drawing code
             ctx.clearRect(0, 0, canvas.width, canvas.height);
+            drawBricks();
             drawBall();
+            drawPaddle();
             
             //Right || Left
             if(x + dx > canvas.width-ballRadius || x + dx < ballRadius)
@@ -93,9 +141,41 @@
                     dx = -dx;
                 }
             //Bottom || Top
-            if(y + dy > canvas.height-ballRadius || y + dy < ballRadius)
+//            if(y + dy > canvas.height-ballRadius || y + dy < ballRadius)
+//                {
+//                    dy = -dy;
+//                }
+            if(y + dy < ballRadius)
                 {
                     dy = -dy;
+                }
+            else if (y + dy > canvas.height-ballRadius)
+                {
+                    if(x > paddleX && x < paddleX + paddleWidth)
+                        {
+                            dy = -dy;
+                        }
+                    else
+                        {
+                            alert("GAME OVER");
+                            document.location.reload();
+                        }
+                }
+            if(rightPressed)
+                {
+                    paddleX += 3;
+                }
+            else if(leftPressed)
+                {
+                    paddleX -= 3;
+                }
+            if(rightPressed && paddleX < canvas.width-paddleWidth)
+                {
+                    paddleX += 3;
+                }
+            else if(leftPressed)
+                {
+                    paddleX -= 3;
                 }
             
             x += dx;
