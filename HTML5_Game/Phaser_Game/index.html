@@ -45,24 +45,26 @@
         
         function preload ()
         {
-            this.load.image('bamboo','assets/sky.png'); 
+            this.load.image('bamboo','assets/bamboo.png'); 
             this.load.image('ground','assets/platform.png'); 
-            this.load.image('star','assets/star.png'); 
+            this.load.image('star','assets/leaf.png'); 
             this.load.image('bomb','assets/bomb.png'); 
             this.load.spritesheet('panda','assets/panda1.png', { frameWidth: 32, frameHeight: 48 });
         }
         
         function create ()
         {
-            this.add.image(800, 600, 'bamboo');
+            this.add.image(400, 300, 'bamboo');
             
             platforms = this.physics.add.staticGroup();
             
             platforms.create(400, 568, 'ground').setScale(2).refreshBody();
             
-            platforms.create(600,400,'ground');
-            platforms.create(50,250,'ground');
+            platforms.create(400,450,'ground');
+            platforms.create(50,300,'ground');
             platforms.create(750,220,'ground');
+            platforms.create(400,100,'ground');
+            platforms.create(650,350,'ground');
             
               player = this.physics.add.sprite(100, 450, 'panda');
         
@@ -97,6 +99,12 @@
             key: 'star',
             repeat: 11,
             setXY: { x: 12, y: 0, stepX: 70 }
+        });
+            
+        stars.children.iterate(function (child) {
+            
+            child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+            
         });
             
         bombs = this.physics.add.group();
